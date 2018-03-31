@@ -6,8 +6,6 @@ This [MagicMirror](https://github.com/MichMich/MagicMirror) module, shows values
 
 ## Dependencies
 - An installation of [MagicMirror<sup>2</sup>](https://github.com/MichMich/MagicMirror)
-- [request](https://www.npmjs.com/package/request)
-- [underscore](https://www.npmjs.com/package/underscore)
 
 ## Installation
 
