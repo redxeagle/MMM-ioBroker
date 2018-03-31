@@ -1,8 +1,8 @@
-# Module: MMM-FHEM
-This [MagicMirror](https://github.com/MichMich/MagicMirror) module, shows values like temperature/humidity of [FHEM](http://fhem.de) devices.
+# Module: MMM-ioBroker
+This [MagicMirror](https://github.com/MichMich/MagicMirror) module, shows values like temperature/humidity of [ioBroker](http://ioBroker.net) devices.
 
-![Magic-Mirror Module MMM-FHEM screenshot](https://github.com/BenRoe/MMM-FHEM/blob/gh-pages/Screenshot1.png?raw=true)
-![Magic-Mirror Module MMM-FHEM screenshot](https://github.com/BenRoe/MMM-FHEM/blob/gh-pages/Screenshot2.png?raw=true)
+![Magic-Mirror Module MMM-ioBroker screenshot](https://github.com/BenRoe/MMM-FHEM/raw/gh-pages/Screenshot1.png?raw=true)
+![Magic-Mirror Module MMM-ioBroker screenshot](https://github.com/BenRoe/MMM-FHEM/raw/gh-pages/Screenshot2.png?raw=true)
 
 ## Dependencies
 - An installation of [MagicMirror<sup>2</sup>](https://github.com/MichMich/MagicMirror)
@@ -18,10 +18,10 @@ cd ~/MagicMirror/modules
 
 Clone this repository:
 ```
-git clone https://github.com/BenRoe/MMM-FHEM
+git clone https://github.com/ioBroker/MMM-ioBroker
 ```
 
-Navigate to the new `MMM-FHEM` folder and install the node dependencies.
+Navigate to the new `MMM-ioBroker` folder and install the node dependencies.
 ```
 npm install
 ```
@@ -30,7 +30,7 @@ Configure the module in your `config.js` file.
 
 ## Update the module
 
-Navigate into the `MMM-FHEM` folder with `cd ~/MagicMirror/modules/MMM-FHEM` and get the latest code from Github with `git pull`.
+Navigate into the `MMM-ioBroker` folder with `cd ~/MagicMirror/modules/MMM-ioBroker` and get the latest code from Github with `git pull`.
 
 If you haven't changed the modules, this should work without any problems. Type `git status` to see your changes, if there are any, you can reset them with `git reset --hard`. After that, git pull should be possible.
 
@@ -40,28 +40,28 @@ To use this module, add it to the modules array in the `config/config.js` file:
 ```javascript
 modules: [
   {
-    module: 'MMM-FHEM',
+    module: 'MMM-ioBroker',
     position: 'bottom_bar',
     config: {
       host: 'localhost',
-      port: '8083',
+      port: '8082',
       https: false,
       devices: [
-                  { deviceName: 'FhemDeviceName1',
-                    deviceReadings: [
-                                      { name: 'temperature', icon: 'wi wi-thermometer', suffix: '&deg;' },
-                                      { name: 'humidity', icon: 'wi wi-humidity', suffix: '%' },
-                                    ],
+                  { deviceName: 'writeHereTheName1',
+                    deviceStates: [
+                                      { id: 'mqtt.0.sensorX.temperature', icon: 'wi wi-thermometer', suffix: '&deg;' },
+                                      { id: 'mqtt.0.sensorX.humidity',    icon: 'wi wi-humidity',    suffix: '%' }
+                                  ]
                   },
-                  { deviceName: 'FhemDeviceName2',
-                    deviceReadings: [
-                                      { name: 'temperature', icon: 'wi wi-thermometer', suffix: '&deg;' },
-                                      { name: 'battery', icon: 'fa fa-battery-half', suffix: '' },                                      
-                                    ],
-                  },
-                ],
-    },
-  },
+                  { deviceName: 'writeHereTheName2',
+                    deviceStates: [
+                                      { id: 'mqtt.0.sensorY.temperature', icon: 'wi wi-thermometer',  suffix: '&deg;' },
+                                      { id: 'mqtt.0.sensorY.battery',     icon: 'fa fa-battery-half', suffix: '' }                                     
+                                  ]
+                  }
+                ]
+    }
+  }
 ]
 ```
 
@@ -79,42 +79,42 @@ The following properties can be configured:
 	<tbody>
 		<tr>
 			<td><code>host</code></td>
-			<td>Hostname/IP of the FHEM Server.
-            Is only necessary, if FHEM and Magic-Mirror is <u>not</u> on the same machine (Raspberry Pi).<br>
+			<td>Hostname/IP of the ioBroker Server.
+            Is only necessary, if ioBroker and Magic-Mirror is <u>not</u> on the same machine (Raspberry Pi).<br>
             <b>Possible values:</b> <code>localhost</code> or a IP<br>
 			<b>Default value:</b> <code>localhost</code>
 			</td>
 		</tr>
 		<tr>
 			<td><code>port</code></td>
-			<td>FHEM Port<br>
+			<td>ioBroker web Port<br>
                 <b>Possible values:</b> any number<br>
-                <b>Default value:</b> <code>8083</code>
+                <b>Default value:</b> <code>8082</code>
 			</td>
 		</tr>
         <tr>
 			<td><code>https</code></td>
-			<td>If your FHEM use https<br>
+			<td>If your ioBroker use https<br>
                 <b>Possible values:</b> <code>true</code> or <code>false</code><br>
                 <b>Default value:</b> <code>false</code>
 			</td>
 		</tr>
         <tr>
 			<td><code>devices</code></td>
-			<td>Array of objects. Object for the different FHEM devices.
+			<td>Array of objects. Object for the different ioBroker devices.
 <pre><code>
-{ deviceName: 'FhemDeviceName1',
-  deviceReadings: [
-     { name: 'temperature', icon: 'wi wi-thermometer', suffix: '&deg;' },
-     { name: 'humidity', icon: 'wi wi-humidity', suffix: '%' },
+{ deviceName: 'yourNameHere1',
+  deviceStates: [
+     { id: 'mqtt.0.device1.temperature',  icon: 'wi wi-thermometer', suffix: '&deg;' },
+     { id: 'mqtt.0.device1.mqtthumidity', icon: 'wi wi-humidity',    suffix: '%'     },
   ],
 },
 </code></pre>
-            <b>deviceName</b>: Go to the FHEM Web-UI, find the device under Unsorted or another room and find <code>NAME</code> under <code>Internals</code>.
+            <b>deviceName</b>: Just a text, that will be shown as title.
             <br />
-            <b>deviceReadings</b>: array of objects for the device readings you want to display.
+            <b>deviceStates</b>: array of states for the device readings you want to display.
             <br />
-            <b>name:</b> Name of the Reading (Required)
+            <b>id:</b> ID of the state (Required). Go to the ioBroker admin, find the state ID.
             <br>
             <b>icon:</b> CSS class of an icon (<a href="http://fontawesome.io/icons/">Font-Awesome</a> and <a href="https://erikflowers.github.io/weather-icons/">Weather Icons</a> are pre installed)
             <br>

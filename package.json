@@ -1,25 +1,25 @@
 {
-  "name": "Magic-Mirror-Module-FHEM",
-  "version": "0.2.0",
-  "description": "FHEM Readings module for the Magic Mirror.",
+  "name": "Magic-Mirror-Module-ioBroker",
+  "version": "0.1.0",
+  "description": "ioBroker Readings module for the Magic Mirror.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BenRoe/MMM-FHEM"
+    "url": "git+https://github.com/ioBroker/MMM-ioBroker"
   },
   "keywords": [
     "magic mirror",
     "smart mirror",
-    "fhem",
+    "ioBroker",
+    "iot",
     "home automation",
     "module"
   ],
   "author": "Benjamin Roesner",
-  "contributors": "https://github.com/BenRoe/MMM-FHEM/graphs/contributors",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/BenRoe/MMM-FHEM/issues"
+    "url": "https://github.com/ioBroker/MMM-ioBroker/issues"
   },
-  "homepage": "https://github.com/BenRoe/MMM-FHEM#readme",
+  "homepage": "https://github.com/ioBroker/MMM-ioBroker#readme",
   "dependencies": {
     "request": "latest",
     "underscore": "latest"

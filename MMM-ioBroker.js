@@ -1,34 +1,32 @@
 /* global Module */
 
 /* Magic Mirror
- * Module: MMM-FHEM
+ * Module: MMM-ioBroker
  *
  * By Benjamin Roesner http://benjaminroesner.com
  * MIT Licensed.
  */
 
 // TODO: implement the weather icons
-// TODO: add support for https
-
-Module.register('MMM-FHEM', {
+Module.register('MMM-ioBroker', {
 
   defaults: {
     host: 'localhost',
-    port: '8083',
+    port: '8082',
     initialLoadDelay: 1000,
-    updateInterval: 1 * 60 * 1000, // every 1 minutes
+    updateInterval: 60 * 1000 // every 1 minutes
   },
 
   // Define required scripts.
   getStyles: function () {
-    return ['MMM-FHEM.css'];
+    return ['MMM-ioBroker.css'];
   },
 
   // Override socket notification handler.
   // Module notifications from node_helper
-  socketNotificationReceived: function(notification, payload) {
+  socketNotificationReceived: function (notification, payload) {
     if (notification === 'DATARECEIVED') {
-      this.devices = payload;
+      this.values = payload;
       // Log.log(payload);
       this.updateDom(2000);
       this.scheduleUpdate(this.config.updateInterval);
@@ -37,7 +35,7 @@ Module.register('MMM-FHEM', {
 
   // Method is called when all modules are loaded an the system is ready to boot up
   start: function() {
-    this.devices = [];
+    this.values = {};
     this.updateTimer = null;
     this.scheduleUpdate(this.config.initialLoadDelay);
     Log.info('Starting module: ' + this.name);
@@ -58,20 +56,17 @@ Module.register('MMM-FHEM', {
     clearTimeout(this.updateTimer);
     this.updateTimer = setTimeout(function () {
       self.sendSocketNotification('GETDATA', self.config);
-      // Log.log('FHEM new data fetched...');
+      // Log.log('ioBroker new data fetched...');
     }, nextLoad);
   },
 
   // Update the information on screen
-  getDom: function() {
+  getDom: function () {
     var self = this;
-    var devices = this.devices;
     var wrapper = document.createElement('div');
     wrapper.className = 'flex-container small';
 
-    devices.forEach(function(element, index, array) {
-      var device = element;
-
+    this.config.devices.forEach(function (device) {
       var deviceWrapper = document.createElement('div');
       deviceWrapper.className = 'flex-item normal';
 
@@ -81,31 +76,28 @@ Module.register('MMM-FHEM', {
       titleWrapper.className = 'title';
       deviceWrapper.appendChild(titleWrapper);
 
-      // add reading 1
-      device.values.forEach(function(elementValue, indexValue, arrayValue) {
-        var value = elementValue;
+      // add states of device
+      device.deviceStates.forEach(function (stateConfig) {
         var valueWrapper = document.createElement('div');
 
         //add icon
-        if (self.config.devices[index].deviceReadings[indexValue].icon) {
-          valueWrapper.innerHTML = '<i class="dimmed ' + self.config.devices[index].deviceReadings[indexValue].icon + '"></i>';
+        if (stateConfig.icon) {
+          valueWrapper.innerHTML = '<i class="dimmed ' + stateConfig.icon + '"></i>';
         }
 
-        valueWrapper.innerHTML += value;
+        valueWrapper.innerHTML += (self.values[stateConfig.id] === undefined) ? '---' : self.values[stateConfig.id];
 
         // add suffix
-        if (self.config.devices[index].deviceReadings[indexValue].suffix) {
-          valueWrapper.innerHTML += self.config.devices[index].deviceReadings[indexValue].suffix;
+        if (stateConfig.suffix) {
+          valueWrapper.innerHTML += stateConfig.suffix;
         }
         valueWrapper.className = 'value medium bright';
         deviceWrapper.appendChild(valueWrapper);
       });
 
       wrapper.appendChild(deviceWrapper);
-
     });
 
     return wrapper;
   }
-
 });

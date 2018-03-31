@@ -1,0 +1,59 @@
+.MMM-ioBroker .flex-container {
+  display: flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.MMM-ioBroker .module-content .flex-item {
+  /*margin: auto;*/
+}
+
+.region.left .MMM-ioBroker .flex-container,
+.region.center .MMM-ioBroker .flex-container,
+.region.right .MMM-ioBroker .flex-container {
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  align-items: flex-end;
+  -webkit-align-items: flex-end;
+  max-width: 300px;
+}
+
+.region.left .MMM-ioBroker .flex-container .flex-item > div,
+.region.center .MMM-ioBroker .flex-container .flex-item > div,
+.region.right .MMM-ioBroker .flex-container .flex-item > div {
+  display: inline-block;
+  min-width: 70px;
+}
+
+.MMM-ioBroker .flex-item .title {
+  border-bottom: 1px solid #666;
+}
+
+.region.left .MMM-ioBroker .flex-item .title,
+.region.center .MMM-ioBroker .flex-item .title,
+.region.right .MMM-ioBroker .flex-item .title{
+  border-bottom: none;
+}
+
+.MMM-ioBroker .flex-item .value {
+  display: inline-block;
+  margin: 10px 5px;
+}
+
+.region.left .MMM-ioBroker .flex-item .value,
+.region.center .MMM-ioBroker .flex-item .value,
+.region.right .MMM-ioBroker .flex-item .value{
+  margin: 0;
+  font-size: 1em;
+}
+
+.MMM-ioBroker .value i {
+  margin-right: 8px;
+  font-size: 0.75em;
+
+}
