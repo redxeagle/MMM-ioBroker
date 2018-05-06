@@ -6,7 +6,6 @@
  * By Benjamin Roesner http://benjaminroesner.com
  * MIT Licensed.
  */
-
 const NodeHelper = require('node_helper');
 var http;
 var https;
@@ -61,12 +60,13 @@ module.exports = NodeHelper.create({
     var count = 0; // works even for node 0.10
     var result = {};
     var url = 'http' + (config.https ? 's' : '') + '://' + (config.host || 'localhost') + ':' + (config.port || 8082) + '/state/';
+    var that = this;
 
     for (var i = 0; i < config.devices.length; i++) {
       for (var s = 0; s < config.devices[i].deviceStates.length; s++) {
         count++;
         (function (_id) {
-          this.request(url + '_id', function (body) {
+          that.request(url + _id, function (body) {
             var data = {val: '-'};
             try {
               data = JSON.parse(body || '{"val": "-"}');
