@@ -19,11 +19,6 @@ Clone this repository:
 git clone https://github.com/ioBroker/MMM-ioBroker
 ```
 
-Navigate to the new `MMM-ioBroker` folder and install the node dependencies.
-```
-npm install
-```
-
 Configure the module in your `config.js` file.
 
 ## Update the module
@@ -45,19 +40,19 @@ modules: [
       port: '8082',
       https: false,
       devices: [
-                  { deviceName: 'writeHereTheName1',
-                    deviceStates: [
-                                      { id: 'mqtt.0.sensorX.temperature', icon: 'wi wi-thermometer', suffix: '&deg;' },
-                                      { id: 'mqtt.0.sensorX.humidity',    icon: 'wi wi-humidity',    suffix: '%' }
-                                  ]
-                  },
-                  { deviceName: 'writeHereTheName2',
-                    deviceStates: [
-                                      { id: 'mqtt.0.sensorY.temperature', icon: 'wi wi-thermometer',  suffix: '&deg;' },
-                                      { id: 'mqtt.0.sensorY.battery',     icon: 'fa fa-battery-half', suffix: '' }                                     
-                                  ]
-                  }
-                ]
+          { deviceName: 'writeHereTheName1',
+            deviceStates: [
+                              { id: 'mqtt.0.sensorX.temperature', icon: 'wi wi-thermometer', suffix: '&deg;' },
+                              { id: 'mqtt.0.sensorX.humidity',    icon: 'wi wi-humidity',    suffix: '%' }
+                          ]
+          },
+          { deviceName: 'writeHereTheName2',
+            deviceStates: [
+                              { id: 'mqtt.0.sensorY.temperature', icon: 'wi wi-thermometer',  suffix: '&deg;' },
+                              { id: 'mqtt.0.sensorY.battery',     icon: 'fa fa-battery-half', suffix: '' }
+                          ]
+          }
+        ]
     }
   }
 ]
