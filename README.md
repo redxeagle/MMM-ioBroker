@@ -40,13 +40,13 @@ modules: [
       port: '8082',
       https: false,
       devices: [
-          { deviceName: 'writeHereTheName1',
+          { name: 'writeHereTheName1',
             deviceStates: [
                               { id: 'mqtt.0.sensorX.temperature', icon: 'wi wi-thermometer', suffix: '&deg;' },
                               { id: 'mqtt.0.sensorX.humidity',    icon: 'wi wi-humidity',    suffix: '%' }
                           ]
           },
-          { deviceName: 'writeHereTheName2',
+          { name: 'writeHereTheName2',
             deviceStates: [
                               { id: 'mqtt.0.sensorY.temperature', icon: 'wi wi-thermometer',  suffix: '&deg;' },
                               { id: 'mqtt.0.sensorY.battery',     icon: 'fa fa-battery-half', suffix: '' }
@@ -96,14 +96,14 @@ The following properties can be configured:
 			<td><code>devices</code></td>
 			<td>Array of objects. Object for the different ioBroker devices.
 <pre><code>
-{ deviceName: 'yourNameHere1',
+{ name: 'yourNameHere1',
   deviceStates: [
      { id: 'mqtt.0.device1.temperature',  icon: 'wi wi-thermometer', suffix: '&deg;' },
      { id: 'mqtt.0.device1.mqtthumidity', icon: 'wi wi-humidity',    suffix: '%'     },
   ],
 },
 </code></pre>
-            <b>deviceName</b>: Just a text, that will be shown as title.
+            <b>name</b>: Just a text, that will be shown as title.
             <br />
             <b>deviceStates</b>: array of states for the device readings you want to display.
             <br />
