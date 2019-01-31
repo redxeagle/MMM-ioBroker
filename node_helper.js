@@ -59,7 +59,7 @@ module.exports = NodeHelper.create({
   getIobJson: function (config, callback) {
     var count = 0; // works even for node 0.10
     var result = {};
-    var url = 'http' + (config.https ? 's' : '') + '://' + (config.host || 'localhost') + ':' + (config.port || 8082) + '/state/';
+    var url = 'http' + (config.https ? 's' : '') + '://' + (config.host || 'localhost') + ':' + (config.port || 8082) + '/get/';
     var that = this;
 
     for (var i = 0; i < config.devices.length; i++) {
