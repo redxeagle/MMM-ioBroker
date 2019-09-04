@@ -6,6 +6,7 @@ This [MagicMirror](https://github.com/MichMich/MagicMirror) module, shows values
 
 ## Dependencies
 - An installation of [MagicMirror<sup>2</sup>](https://github.com/MichMich/MagicMirror)
+- In ioBroker the installation of adapter [simpleAPI](https://github.com/ioBroker/ioBroker.simple-api)
 
 ## Installation
 
