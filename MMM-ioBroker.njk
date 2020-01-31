@@ -1,0 +1,21 @@
+<div class="flex-container small">
+    {% block devices %}
+    {% for device in config.devices %}
+        {% block device %}
+        <div class="flex-item normal">
+            <div class="title">{{ device.name | safe }}</div>
+            {% for deviceState in device.deviceStates %}
+                {% block state %}
+                <div class="value medium bright">
+                    {% if deviceState.icon %}<i class="dimmed {{ deviceState.icon }}"></i>{% endif %}
+                    {{ values[deviceState.id] | default('---')}}{{ deviceState.suffix | default('') | safe }}
+                </div>
+                {% endblock %}
+            {% else %}
+            {% endfor %}
+        </div>
+        {% endblock %}
+    {% else %}
+    {% endfor %}
+    {% endblock %}
+</div>

@@ -40,6 +40,7 @@ modules: [
       host: 'localhost',
       port: '8082',
       https: false,
+      template: 'MMM-ioBorker.njk',
       devices: [
           { name: 'writeHereTheName1',
             deviceStates: [
@@ -93,6 +94,15 @@ The following properties can be configured:
                 <b>Default value:</b> <code>false</code>
 			</td>
 		</tr>
+        <tr>
+            <td><code>template</code></td>
+            <td>Name of the used nunjucks template file<br>
+                <b>Possible values:</b> any template file in the MMM-ioBoker directory<br>
+                <b>Default value:</b> 'MMM-ioBroker.njk'<br>
+                Using a user Nunjuck template file you may change the output. E.g. change the color of an Item or skip it, if usefull.<br>
+                see [Homepage of Nunjucks](https://mozilla.github.io/nunjucks/)
+            </td>
+        </tr>
         <tr>
 			<td><code>devices</code></td>
 			<td>Array of objects. Object for the different ioBroker devices.

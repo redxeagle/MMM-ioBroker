@@ -22,12 +22,23 @@ Module.register('MMM-ioBroker', {
     return ['MMM-ioBroker.css'];
   },
 
+  getTemplate: function () {
+    return this.config.template || "MMM-ioBroker.njk";
+  },
+
+
+  getTemplateData: function () {
+    return {
+      values: this.values,
+      config: this.config
+    };
+  },
+
   // Override socket notification handler.
   // Module notifications from node_helper
   socketNotificationReceived: function (notification, payload) {
     if (notification === 'DATARECEIVED') {
       this.values = payload;
-      // Log.log(payload);
       this.updateDom(2000);
       this.scheduleUpdate(this.config.updateInterval);
     }
@@ -59,45 +70,4 @@ Module.register('MMM-ioBroker', {
       // Log.log('ioBroker new data fetched...');
     }, nextLoad);
   },
-
-  // Update the information on screen
-  getDom: function () {
-    var self = this;
-    var wrapper = document.createElement('div');
-    wrapper.className = 'flex-container small';
-
-    this.config.devices.forEach(function (device) {
-      var deviceWrapper = document.createElement('div');
-      deviceWrapper.className = 'flex-item normal';
-
-      // add device alias/name
-      var titleWrapper = document.createElement('div');
-      titleWrapper.innerHTML = device.name;
-      titleWrapper.className = 'title';
-      deviceWrapper.appendChild(titleWrapper);
-
-      // add states of device
-      device.deviceStates.forEach(function (stateConfig) {
-        var valueWrapper = document.createElement('div');
-
-        //add icon
-        if (stateConfig.icon) {
-          valueWrapper.innerHTML = '<i class="dimmed ' + stateConfig.icon + '"></i>';
-        }
-
-        valueWrapper.innerHTML += (self.values[stateConfig.id] === undefined) ? '---' : self.values[stateConfig.id];
-
-        // add suffix
-        if (stateConfig.suffix) {
-          valueWrapper.innerHTML += stateConfig.suffix;
-        }
-        valueWrapper.className = 'value medium bright';
-        deviceWrapper.appendChild(valueWrapper);
-      });
-
-      wrapper.appendChild(deviceWrapper);
-    });
-
-    return wrapper;
-  }
 });
