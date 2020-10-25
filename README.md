@@ -40,7 +40,7 @@ modules: [
       host: 'localhost',
       port: '8082',
       https: false,
-      template: 'MMM-ioBorker.njk',
+      template: 'MMM-ioBroker.njk',
       devices: [
           { name: 'writeHereTheName1',
             deviceStates: [
