@@ -60,6 +60,48 @@ modules: [
 ]
 ```
 
+For a Floorplan you can use this configuration
+
+```javascript
+modules: [
+  {
+    module: 'MMM-ioBroker',
+    position: 'bottom_bar',
+    config: {
+      host: 'localhost',
+      port: '8082',
+      https: false,
+      template: 'MMM-Floorplan.njk',
+      devices: [
+          { name: 'writeHereTheName1',
+            deviceStates: [
+                              { id: 'mqtt.0.sensorX.temperature', icon: 'wi wi-thermometer', suffix: '&deg;', left: 240, top: 300 },
+                              { id: 'mqtt.0.sensorX.humidity',    icon: 'wi wi-humidity',    suffix: '%', left: 270, top: 300 }
+                          ]
+          },
+          { name: 'writeHereTheName2',
+            deviceStates: [
+                              { id: 'mqtt.0.sensorY.temperature', icon: 'wi wi-thermometer',  suffix: '&deg;', left: 240, top: 100  },
+                              { id: 'mqtt.0.sensorY.battery',     icon: 'fa fa-battery-half', suffix: '', left: 290, top: 100  }
+                          ]
+          },
+          { name: 'Doors',
+            deviceStates: [
+                              { id: 'deconz.0.Sensors.16.open', type: 'door', left: 20, top: 143 },
+                              { id: 'deconz.0.Sensors.17.open', type: 'door', left: 20, top: 12 }
+                          ]
+          },
+          { name: 'Lights',
+            deviceStates: [
+              { id: 'deconz.0.Lights.10.on', type: 'light', left: 110, top: 300 },
+              { id: 'deconz.0.Lights.7.on', type: 'light', left: 385, top: 46 }
+            ]
+          }
+        ]
+    }
+  }
+]
+```
 ## Configuration options
 
 The following properties can be configured:
