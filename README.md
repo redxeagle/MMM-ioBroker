@@ -3,7 +3,7 @@ This [MagicMirror](https://github.com/MichMich/MagicMirror) module, shows values
 
 ![Magic-Mirror Module MMM-ioBroker screenshot](https://github.com/BenRoe/MMM-FHEM/raw/gh-pages/Screenshot1.png?raw=true)
 ![Magic-Mirror Module MMM-ioBroker screenshot](https://github.com/BenRoe/MMM-FHEM/raw/gh-pages/Screenshot2.png?raw=true)
-![Magic-Mirror Module MMM-ioBroker screenshot](https://github.com/RedXEagle/MMM-ioBroker/raw/test/Floorplan-Example.png?raw=true)
+![Magic-Mirror Module MMM-ioBroker screenshot](https://github.com/RedXEagle/MMM-ioBroker/raw/master/test/Floorplan-Example.png?raw=true)
 
 ## Dependencies
 - An installation of [MagicMirror<sup>2</sup>](https://github.com/MichMich/MagicMirror)
