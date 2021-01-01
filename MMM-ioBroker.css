@@ -9,6 +9,17 @@
   justify-content: space-around;
 }
 
+.floorplan {
+  background-image: url("images/floorplan-daniel.png");
+  width: 520px;
+  height: 400px;
+  position: relative;
+}
+
+.floorplan-item {
+  position: absolute;
+}
+
 .MMM-ioBroker .module-content .flex-item {
   /*margin: auto;*/
 }
@@ -21,6 +32,10 @@
   align-items: flex-end;
   -webkit-align-items: flex-end;
   max-width: 300px;
+}
+
+.extra-width {
+  max-width: 520px !important;
 }
 
 .region.left .MMM-ioBroker .flex-container .flex-item > div,

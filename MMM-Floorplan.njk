@@ -1,0 +1,23 @@
+<div class="flex-container small extra-width">
+    {% block devices %}
+    <div class="floorplan">
+    {% for device in config.devices %}
+        {% block device %}
+          {% for deviceState in device.deviceStates %}
+              {% block state %}
+              <div class="floorplan-item" style="left: {{ deviceState.left }}px; top:{{ deviceState.top }}px">
+              <div class="value small bright">
+                  {% if deviceState.icon %}<i class="dimmed {{ deviceState.icon }}"></i>{% endif %}
+                  {{ values[deviceState.id] | default('---')}}{{ deviceState.suffix | default('') | safe }}
+              </div>
+              {% endblock %}
+              </div>
+          {% else %}
+          {% endfor %}
+
+        {% endblock %}
+    {% else %}
+    {% endfor %}
+    </div>
+    {% endblock %}
+</div>
