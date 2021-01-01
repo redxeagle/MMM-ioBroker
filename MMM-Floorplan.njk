@@ -5,11 +5,17 @@
         {% block device %}
           {% for deviceState in device.deviceStates %}
               {% block state %}
-              <div class="floorplan-item" style="left: {{ deviceState.left }}px; top:{{ deviceState.top }}px">
-              <div class="value small bright">
-                  {% if deviceState.icon %}<i class="dimmed {{ deviceState.icon }}"></i>{% endif %}
-                  {{ values[deviceState.id] | default('---')}}{{ deviceState.suffix | default('') | safe }}
-              </div>
+                <div class="floorplan-item" style="left: {{ deviceState.left }}px; top:{{ deviceState.top }}px">
+                {% if deviceState.type == 'door' %}
+                  <div class="value small bright">
+                      <i class="dimmed {% if values[deviceState.id] == true %}fa fa-door-open {% else %}fa fa-door-closed{% endif %}"></i>
+                  </div>
+                {% else %}
+                  <div class="value small bright">
+                    {% if deviceState.icon %}<i class="dimmed {{ deviceState.icon }}"></i>{% endif %}
+                    {{ values[deviceState.id] | default('---')}}{{ deviceState.suffix | default('') | safe }}
+                  </div>
+                {% endif %}
               {% endblock %}
               </div>
           {% else %}
