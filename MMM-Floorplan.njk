@@ -8,7 +8,7 @@
                 <div class="floorplan-item" style="left: {{ deviceState.left }}px; top:{{ deviceState.top }}px">
                 {% if deviceState.type == 'door' %}
                   <div class="value small bright">
-                      <i class="dimmed {% if values[deviceState.id] == true %}fa fa-door-open {% else %}fa fa-door-closed{% endif %}"></i>
+                      <i class="dimmed {% if values[deviceState.id] == true %}fa fa-door-open open {% else %}fa fa-door-closed{% endif %}"></i>
                   </div>
                 {% else %}
                   <div class="value small bright">

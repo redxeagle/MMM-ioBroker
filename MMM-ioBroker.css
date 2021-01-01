@@ -38,6 +38,11 @@
   max-width: 520px !important;
 }
 
+.open {
+  color: #16ca3d;  
+}
+
+
 .region.left .MMM-ioBroker .flex-container .flex-item > div,
 .region.center .MMM-ioBroker .flex-container .flex-item > div,
 .region.right .MMM-ioBroker .flex-container .flex-item > div {
