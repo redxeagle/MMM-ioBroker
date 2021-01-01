@@ -10,6 +10,10 @@
                   <div class="value small bright">
                       <i class="dimmed {% if values[deviceState.id] == true %}fa fa-door-open open {% else %}fa fa-door-closed{% endif %}"></i>
                   </div>
+                {% elif deviceState.type == 'light' %}
+                  <div class="value small bright">
+                    <i class="dimmed fa fa-lightbulb {% if values[deviceState.id] == true %}light-on{% endif %}"></i>
+                  </div>
                 {% else %}
                   <div class="value small bright">
                     {% if deviceState.icon %}<i class="dimmed {{ deviceState.icon }}"></i>{% endif %}
